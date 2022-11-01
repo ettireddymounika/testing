@@ -1,0 +1,9 @@
+
+
+CREATE COMPUTE MODULE msgs_Compute1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.XMLNSC.error=InputExceptionList;
+		RETURN TRUE;
+	END;
+END MODULE;

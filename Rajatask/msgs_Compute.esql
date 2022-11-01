@@ -1,0 +1,19 @@
+
+
+CREATE COMPUTE MODULE msgs_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		If (InputRoot.XMLNSC.root ='mounika')Then
+		SET OutputLocalEnvironment.Destination.MQ.DestinationData.queueName ='L2';
+		Elseif (InputRoot.XMLNSC.root ='REDDY')Then
+		SET OutputLocalEnvironment.Destination.MQ.DestinationData.queueName ='L3';
+		Elseif (InputRoot.XMLNSC.root ='BABY')Then
+		SET OutputLocalEnvironment.Destination.MQ.DestinationData.queueName ='L4';
+		Else
+			SET OutputLocalEnvironment.Destination.MQ.DestinationData.queueName ='L6';
+		END IF;	
+		PROPAGATE TO TERMINAL 'out1';
+		RETURN FALSE;
+	END;
+END MODULE;
